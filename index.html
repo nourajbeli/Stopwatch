@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>CodePen - A Pen by Nour</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>My Page</title>
+
+  <!-- Link CSS: <link rel="stylesheet" href="styles.css"> -->
+  <style>
+    body {
+      font-family: ariel, sans-serif;
+      background-color: white;
+    }
+
+    h1 {
+      font-size: 3em;
+      text-align: center;
+      color: lightblue;
+      text-shadow: 5px 5px 5px black;
+    }
+
+    .box {
+      min-width: 350px;
+      border: 2px solid;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 5px 5px 10px;
+      background-color: black;
+    }
+
+    .stopwatch {
+      color:white;
+      text-align: center;
+      font-size: 2em;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .btn1 {
+      border-radius: 10px;
+      background-color: lightgreen;
+      font-size: 2em;
+      padding: 10px;
+      margin: 10px;
+      font-weight:bold;
+      cusor: pointer;
+    }
+
+    .btn1:hover {
+      background-color: limegreen;
+    }
+
+    .btn2 {
+      border-radius: 10px;
+      background-color: tomato;
+      font-size: 2em;
+      padding: 10px;
+      margin: 10px;
+      font-weight:bold;
+      cusor: pointer;
+    }
+
+    .btn2:hover {
+      background-color: red;
+    }
+
+    .btn3 {
+      border-radius: 10px;
+      background-color: lightblue;
+      font-size: 2em;
+      padding: 10px;
+      margin: 10px;
+      font-weight:bold;
+      cusor: pointer;
+    }
+
+    .btn3:hover {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>StopWATCH</h1>
+
+  <div class=box>
+    <div class="stopwatch" id="timedisplay">
+      <h3>00:00:00</h3>
+    </div>
+    <div class="container">
+      <button class="btn1" onclick="startwatch()">start</button>
+      <button class="btn2" onclick="stopwatch()">stop </button>
+      <button class="btn3" onclick="resetwatch()">reset </button>
+    </div>
+
+  </div>
+
+  <script>
+    let [hours, minutes, seconds] = [0, 0, 0];
+    timedisplay = document.getElementById("timedisplay");
+    let timer = null;
+
+    function updatewatch() {
+      seconds++;
+      if (seconds == 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes == 60) {
+          minutes = 0;
+          hours++;
+        }
+      }
+      timedisplay.innerHTML = 
+      String(hours).padStart(2, "0") + ":"+
+      String(minutes).padStart(2, "0") + ":"+
+      String(seconds).padStart(2, "0");
+    }
+
+    function stopwatch() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    function resetwatch() {
+      clearInterval(timer);
+      timer = null;
+      [hours, minutes, seconds] = [0, 0, 0];
+      timedisplay.innerHTML = "00:00:00";
+    }
+
+    function startwatch() {
+      if (timer !== null) {
+        clearInterval(timer);
+      }
+      timer = setInterval(updatewatch, 1000);
+    }
+    
+  </script>
+
+</body>
+
+</html>
+    
+  </body>
+  
+</html>
